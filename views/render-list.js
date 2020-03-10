@@ -1,22 +1,37 @@
 debugger;
 
-const renderList = () => { };
+const renderList = () => {
+    const displayed = strings.displayed
+    const newDiv = document.createElement("Div");
+    newDiv.id = displayed;
+    const h4 = document.createElement('h4');
+    h4.innerText = displayed;
+    newDiv.appendChild(h4);
+    const ul = document.createElement("ul");
+    newDiv.appendChild(ul);
+    for (let item of strings[strings.displayed]) {
+        const newList = document.createElement('li');
+        newList.innerText = item;
+        ul.appendChild(newList);
+    }
+    return newDiv;
+};
 
 
 console.log('-- testing renderList component --\n');
 
 const testRenderList = (component, array, category) => {
-  console.assert(component.nodeName === 'DIV', 'it should be a DIV');
-  console.assert(component.id === category, 'it\'s id should be ' + category);
-  console.assert(component.childElementCount === 2, 'it should have 2 children');
+    console.assert(component.nodeName === 'DIV', 'it should be a DIV');
+    console.assert(component.id === category, 'it\'s id should be ' + category);
+    console.assert(component.childElementCount === 2, 'it should have 2 children');
 
-  console.assert(component.children[0].nodeName === 'H4', 'first child should be an H4');
-  console.assert(component.children[0].innerHTML === category, '.children[0].innerHTML should be ' + category);
+    console.assert(component.children[0].nodeName === 'H4', 'first child should be an H4');
+    console.assert(component.children[0].innerHTML === category, '.children[0].innerHTML should be ' + category);
 
-  console.assert(component.children[1].childElementCount === array.length, '.children[1] should have' + array.length + ' children');
-  for (let i = 0; i < array.length; i++) {
-    console.assert(component.children[1].children[i].innerHTML === array[i], 'li ' + i + ' should display ' + array[i]);
-  };
+    console.assert(component.children[1].childElementCount === array.length, '.children[1] should have' + array.length + ' children');
+    for (let i = 0; i < array.length; i++) {
+        console.assert(component.children[1].children[i].innerHTML === array[i], 'li ' + i + ' should display ' + array[i]);
+    };
 }
 
 
