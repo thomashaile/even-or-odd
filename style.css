@@ -28,7 +28,7 @@ input {
     font-size: 16px;
 }
 
-.button-reset {
+.button-reset{
     width: 90px;
     background-color: red;
     box-sizing: border-box;
